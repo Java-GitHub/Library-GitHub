@@ -1,2 +1,2 @@
 # Library-GitHub
-This Project is not complete yet.
+TO run the project use the Main class in the ui package.
