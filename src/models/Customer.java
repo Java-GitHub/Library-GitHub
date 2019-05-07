@@ -41,6 +41,16 @@ public class Customer {
 		return lastName;
 	}
 	
+	
+	
+	public int getCustomerNumber() {
+		return customerNumber;
+	}
+
+	public void setCustomerNumber(int customerNumber) {
+		this.customerNumber = customerNumber;
+	}
+
 	private void setName(String firstName, String lastName) {
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -68,7 +78,9 @@ public class Customer {
 
 	@Override
 	public String toString() {
-		return getMailingName();
+		return "Customer [firstName=" + firstName + ", lastName=" + lastName + ", address=" + address + ", phoneNumber="
+				+ phoneNumber + ", email=" + email + ", customerNumber=" + customerNumber + ", gender=" + gender
+				+ ", isValid=" + isValid + ", expiryDate=" + expiryDate + "]";
 	}
 
 	@Override
@@ -118,6 +130,7 @@ public class Customer {
 			return false;
 		return true;
 	}
+	
 	
 	
 

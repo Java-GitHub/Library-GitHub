@@ -4,80 +4,114 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.Locale;
+import java.util.Scanner;
 
+import exceptions.LoanAlreadyExistsException;
+import interfaces.MaterialCatalogInterface;
 import models.Book;
-import models.BookCatalog;
-import models.BookNotFoundException;
 import models.Customer;
-import models.DVD;
+import models.Dvd;
+import models.Loan;
+import modelsManagement.LoansRegistry;
+import modelsManagement.MaterialCatalog;
+import switches.SwitchBook;
+import switches.SwitchCustomer;
+import switches.SwitchDvd;
+import switches.SwitchLoan;
+import switches.UserInput;
 import utilities.GenderType;
 
 public class Main {
-
-	public static void main(String[] args) {
+    public static Scanner sc = new Scanner(System.in);
+    
+	public static void main(String[] args) throws Exception {
 		
-		/*Date today = new Date();
-		SimpleDateFormat sdf = new SimpleDateFormat("yyy-MMM-dd");
-		GregorianCalendar gCal = new GregorianCalendar(2019,0,1);
-//		System.out.println(gCal);
-		today = gCal.getTime();
-		System.out.println(sdf.format(today));*/
+	    SwitchBook sBook = new SwitchBook();
+	    SwitchDvd sDVD = new SwitchDvd();
+	    SwitchCustomer sCustomer = new SwitchCustomer();
+	    SwitchLoan sLoan = new SwitchLoan();
+	    UserInput userInput = new UserInput();
+	    
+//	    public void menu() throws Exception {
+	        boolean option = true;
+	        do {
+	            System.out.println("Please Enter your Choice");
+	            System.out.println("1. for Book: ");
+	            System.out.println("2. for DVD: ");
+	            System.out.println("3. for Customer: ");
+	            System.out.println("4. for Loan: ");
+	            System.out.println("8. for Exit: ");
+	            
+	            int choice = userInput.inputNumber();
+	            switch (choice) {
+	                case 1: {
+	                    sBook.menu();
+	                    break;
+	                }
+	                case 2: {
+//	                    System.out.println("Enter Id of the Artist");
+//	                    int artistId = userInput.inputNumber();
+	                    sDVD.menu();
+	                    break;
+	                }
+	                case 3: {
+//	                    System.out.println("Enter Id of the artist");
+//	                    int artistId = userInput.inputNumber();
+	                    sCustomer.menu();
+	                    break;
+	                }
+	                case 4: {
+//	                    System.out.println("Enter Id of the artist");
+//	                    int artistId = userInput.inputNumber();
+	                    sLoan.menu();
+	                    break;
+	                }
+//	                case 5: {
+//	                    System.out.println("Enter Id of the artist");
+//	                    int artistId = userInput.inputNumber();
+//	                    bookCatalog.updateAge(artistId);
+//	                    break;
+//	                }
+//	                case 6: {
+//	                    System.out.println("Show all Customers");
+//	                    loansRegistry.printAllCustomers();
+//	                    break;
+//	                }
+//	                case 7: {
+//	                    System.out.println("Enter Id of the artist");
+//	                    int artistId = userInput.inputNumber();
+//	                    bookCatalog.findById(artistId);
+//	                    break;
+//	                }
+	                case 8: {
+	                    option = false;
+	                    break;
+	                }
+	                default : {
+	                    System.out.println("Enter a valid input");
+	                    break;
+	                }
+	            }
+	        } while (option);
+	    }
 		
-		Customer customer = new Customer("ABC", "XYZ", "Street 1", "0700054321", "abc2xyz.com", 1, GenderType.MALE);
-		System.out.println(customer.getExpiryDate());
-		System.out.println(customer.getMailingName());
-
-		BookCatalog bookCatalog = new BookCatalog();
-
-		Book book1 = new Book(1, "Intro To Java", "Deitel", "12345", "Main", 200);
-		Book book2 = new Book(2, "Intro To C++", "Deitel", "23456", "Main", 300);
-		
-		DVD dvd1 = new DVD(1, "Documentary 1", "Main", "Director 1", "101", 40);
-		DVD dvd2 = new DVD(1, "Documentary 1", "Main", "Director 1", "101", 40);
-
-		System.out.println("compare two DVD's");
-		System.out.println(dvd1.equals(dvd2));
-
-		
-		System.out.println(dvd1.getTitle());
-		
-		book1.relocate("Kista");
-		
-		System.out.println(dvd1.lend(customer));
-		dvd1.licence();
-		System.out.println(dvd1.lend(customer));
-		System.out.println(dvd1.lend(customer));
-
 		
 		
-		bookCatalog.addBook(book1);
-		bookCatalog.addBook(book2);
-
-		UI ui = new UI();
-
-		ui.printHeader();
 		
-		ui.printbookCatelog(bookCatalog.getBookArray());
 		
-		System.out.println(book1.lend(customer));
-		System.out.println(book1.lend(customer));
-		
-		try
-		{
-			Book foundBook = bookCatalog.findBook("Intro To C++");			
-			System.out.println("We found " + foundBook.getTitle());
-		}
-		catch (BookNotFoundException e)
-		{
-			System.out.println("Book wasn't found");
-		}
-		
-//		double d = 1.2345;
-//		NumberFormat nf = NumberFormat.getCurrencyInstance(Locale.FRANCE);
-//		System.out.println(nf.format(d));
-		
-		System.out.println(book1.getLoanPeriod());
-		System.out.println(dvd1.getLoanPeriod());
-		
-	}
+//        Switch sw = new Switch();
+//		  SwitchDvd sw = new SwitchDvd();
+//		  SwitchCustomer sw = new SwitchCustomer();
+//		SwitchLoan sw = new SwitchLoan();
+//		  
+//        try
+//        {
+//        sw.menu();
+//        }
+//        catch (Exception e)
+//        {
+//        	System.out.println("Exception" +e);
+//        }
+//        
+//	}
 }

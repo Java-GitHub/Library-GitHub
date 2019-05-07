@@ -1,5 +1,10 @@
-package ui;
+package switches;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.TreeMap;
+
 import models.Book;
+import models.Material;
 
 public class UI {
 
@@ -34,15 +39,18 @@ public class UI {
 		return fixLengthString(startString, length);
 	}
 
-	public void printbookCatelog(Book[] bookCatalog) {
+//	public void printbookCatelog(TreeMap<String, Book> bookCatalog) {
+//
+//		for (Book nextBook : bookCatalog.values()) {
+//				printBook(nextBook);				
+//			}
+//		}
+	
+	public void printMaterialCatelog(TreeMap<String, Material> materialCatalog) {
 
-		for (int counter = 0; counter < bookCatalog.length; counter++) {
-			if (bookCatalog[counter] != null) {
-				printBook(bookCatalog[counter]);				
+		for (Material nextMaterial : materialCatalog.values()) {
+			System.out.println(nextMaterial.toString());						
 			}
 		}
-
-	}
-
 
 }

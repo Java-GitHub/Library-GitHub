@@ -1,13 +1,13 @@
 package models;
 
-public class DVD extends Material {
+public class Dvd extends Material {
 	
 	private String director;
 	private String catalogNo;
 	private int runningTime;
 	private boolean licenced;
 	
-	public DVD(int id, String title, String branch, String director,
+	public Dvd(String id, String title, String branch, String director,
 			String catalogNo, int runningTime) {
 		super(id, title, branch);
 		this.director = director;
@@ -31,6 +31,12 @@ public class DVD extends Material {
 	
 	public int getLoanPeriod() {
 		return 7;
+	}
+
+	@Override
+	public String toString() {
+		return "Dvd [director=" + director + ", catalogNo=" + catalogNo + ", runningTime=" + runningTime + ", licenced="
+				+ licenced + "]";
 	}	
 	
 }
